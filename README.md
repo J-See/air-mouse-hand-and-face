@@ -33,12 +33,12 @@ It can be installed using `pip install autopy`
   <h3 align=left>Hands</h3>
   <tr>
     <td align=center>
-      <img src="./move.jpeg" alt="Girl in a jacket" width="300" height="300">
-      <img src="./left_click.png" alt="Girl in a jacket" width="300" height="300">
-      <img src="./right_click.png" alt="Girl in a jacket" width="300" height="300">
-      <img src="./left_arrow.png" alt="Girl in a jacket" width="300" height="300">
-      <img src="./scroll.png" alt="Girl in a jacket" width="300" height="300">
-      <img src="./right_arrow.png" alt="Girl in a jacket" width="300" height="300">
+      <img src="./resources/hand/move.jpeg" alt="Girl in a jacket" width="300" height="300">
+      <img src="./resources/hand/left_click.png" alt="Girl in a jacket" width="300" height="300">
+      <img src="./resources/hand/right_click.png" alt="Girl in a jacket" width="300" height="300">
+      <img src="./resources/hand/left_arrow.png" alt="Girl in a jacket" width="300" height="300">
+      <img src="./resources/hand/scroll.png" alt="Girl in a jacket" width="300" height="300">
+      <img src="./resources/hand/right_arrow.png" alt="Girl in a jacket" width="300" height="300">
     </td>
   </tr>
 </table>
@@ -58,7 +58,7 @@ It can be installed using `pip install autopy`
   <h3 align=left>Face</h3>
   <tr class="face_instruction">
     <td class="face_instruction">
-      <img src="./face_M.png" width="300" height="200">
+      <img src="./resources/face/face_M.png" width="300" height="200">
     </td>
     <td class="face_instruction">
       <p><b style="font-size: 25px">Move cursor</b></p>
@@ -67,7 +67,7 @@ It can be installed using `pip install autopy`
   </tr>
   <tr class="face_instruction">
     <td class="face_instruction">
-      <img src="./face_LC.png" width="300" height="200">
+      <img src="./resources/face/face_LC.png" width="300" height="200">
     </td>
     <td class="face_instruction">
       <p><b style="font-size: 25px">Left click</b></p>
@@ -76,7 +76,7 @@ It can be installed using `pip install autopy`
   </tr>
   <tr class="face_instruction">
     <td class="face_instruction">
-      <img src="./face_RC.png" width="300" height="200">
+      <img src="./resources/face/face_RC.png" width="300" height="200">
     </td>
     <td class="face_instruction">
       <p><b style="font-size: 25px">Right click</b></p>
@@ -85,7 +85,7 @@ It can be installed using `pip install autopy`
   </tr>
   <tr class="face_instruction">
     <td class="face_instruction">
-      <img src="./face_SU.png" width="300" height="200">
+      <img src="./resources/face/face_SU.png" width="300" height="200">
     </td>
     <td class="face_instruction">
       <p><b style="font-size: 25px">Scroll up</b></p>
@@ -94,7 +94,7 @@ It can be installed using `pip install autopy`
   </tr>
   <tr class="face_instruction">
     <td class="face_instruction">
-      <img src="./face_SU.png" width="300" height="200">
+      <img src="./resources/face/face_SD.png" width="300" height="200">
     </td>
     <td class="face_instruction">
       <p><b style="font-size: 25px">Scroll down</b></p>
