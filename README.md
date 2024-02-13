@@ -1,4 +1,4 @@
-# air-mouse-hand-and-face
+<h1 align="center">air-mouse-hand-and-face</h1>
 
 In this project we will be using the live feed coming from the webcam to create a air mouse using hand and face
 tracking.
@@ -26,6 +26,13 @@ AutoPy is a simple, cross-platform GUI automation library for Python. It include
 and mouse, finding colors and bitmaps on-screen, and displaying alerts.
 
 It can be installed using `pip install autopy`
+<h1 align="center">Setup</h1>
+<h3>Dependencies</h2>
+<p>Run this command in project directory <code>pip install -r requirement.txt</code></p>
+<h3>Run application</h3>
+```python 
+your_code = do_some_stuff
+```
 
 <h1 align=center>Instruction</h1>
 <!-- hand instruction section -->
