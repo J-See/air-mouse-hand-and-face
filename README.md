@@ -27,7 +27,9 @@ and mouse, finding colors and bitmaps on-screen, and displaying alerts.
 
 It can be installed using `pip install autopy`
 <h1 align="center" style="color:coral">Setup</h1>
-<h3>Dependencies</h2>
+<h3>Notes</h3>
+<span>Use python with version <code>3.8.10</code></span>
+<h3>Dependencies</h3>
 <p>Run this command in project directory <code>pip install -r requirement.txt</code></p>
 <h3>Run application</h3>
 <code>streamlit run app.py</code>
