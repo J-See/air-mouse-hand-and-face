@@ -42,7 +42,7 @@ It can be installed using `pip install autopy`
     </td>
   </tr>
 </table>
-
+<!-- 
 <style>    
   .face_instruction {
   margin-left: auto;  
@@ -52,7 +52,7 @@ It can be installed using `pip install autopy`
   text-align: center;  
   /* font-size: 20px;   */
   }    
-</style>
+</style> -->
 <!-- face instruction section -->
 <table>
   <h3 align=left>Face</h3>
