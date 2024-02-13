@@ -1,0 +1,83 @@
+h1 > div > a {
+  visibility: hidden;
+}
+h2 > div > a {
+  visibility: hidden;
+}
+h3 > div > a {
+  visibility: hidden;
+}
+h4 > div > a {
+  visibility: hidden;
+}
+h5 > div > a {
+  visibility: hidden;
+}
+h6 > div > a {
+  visibility: hidden;
+}
+div[data-testid="stToolbar"] {
+  visibility: hidden;
+}
+div[data-testid="stImage"] > img {
+  border-radius: 13px;
+}
+div > h1 > div {
+  font-size: 60px;
+  text-align: center;
+  /* background: rgb(2, 0, 36);
+  background: radial-gradient(
+    circle,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 121, 95, 1) 55%,
+    rgba(48, 255, 0, 1) 100%
+  ); */
+  border-radius: 100px;
+}
+div > h3 > div {
+  font-size: 28px;
+}
+div > h2 {
+  font-size: 45px;
+  text-align: center;
+}
+.st-emotion-cache-axafcy.e115fcil0 {
+  color: white;
+  font-size: medium;
+}
+.st-emotion-cache-1kyxreq.e115fcil2 {
+  justify-content: center;
+}
+#stDecoration {
+  display: none;
+}
+.st-emotion-cache-cnbvxy p {
+  font-size: large;
+}
+.st-emotion-cache-ltfnpr {
+  color: white;
+  font-size: medium;
+}
+
+/* h1[level="1"]{
+    align-items: center;
+    font-size: 60px;
+} */
+/* #stDecoration{
+    display: none;
+}
+div[data-testid="stToolbar"]{
+    visibility: hidden;
+}
+
+div[data-testid="stImage"] > img {
+    border-radius: 13px;
+}
+.st-emotion-cache-axafcy.e115fcil0{
+    color: white;
+    font-size: medium;
+}
+#7c66d492{
+    align-items: center;
+    font-size: 60px;
+} */
