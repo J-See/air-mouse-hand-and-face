@@ -1,7 +1,7 @@
 import mediapipe as mp
 import cv2
 import numpy as np
-from modules import face as fc
+from modules import face1 as fc
 from modules import utils
 import numpy as np
 import pyautogui

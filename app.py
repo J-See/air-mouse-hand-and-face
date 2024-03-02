@@ -447,142 +447,53 @@ if app_mode == "Face":
     st.write("")
     st.write("")
     st.write("")
-    fc.faceDetector()
+    fc.FaceMeshDetector(
+        staticMode=False, maxFaces=2, minDetectionCon=0.5, minTrackCon=0.5
+    )
     while video.isOpened():
         success, img = video.read()
-        img_height, img_width = img.shape[:2]
-        imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-        results = fc.face_mesh.process(image=imgRGB)
-        if results.multi_face_landmarks:
-            mesh_coords = fc.landmarksDetection(img, results, True)
-            d = fc.depth(mesh_coords)
-            if mesh_coords:
-                ratio, leRatio, reRatio = fc.blinkRatio(
-                    mesh_coords, fc.RIGHT_EYE, fc.LEFT_EYE
+        img, faces, results = fc.findFaceMesh(img,flip=True, draw=False)
+        if faces:
+            for face in faces:
+                leftEyeUpPoint = face[159]
+                leftEyeDownPoint = face[23]
+                # leftEyeVerticalDistance, info = detector.findDistance(leftEyeUpPoint, leftEyeDownPoint)
+
+                # print(leftEyeVerticalDistance)
+                # print(f"up_point: {leftEyeUpPoint}, down_point: {leftEyeDownPoint}")
+                x1, y1 = face[8]
+                # cv2.circle(img, (x1, y1), 5, (255, 24, 255), cv2.FILLED)
+                cv2.rectangle(
+                    img,
+                    (frameR, frameR),
+                    (width - frameR, height - frameR),
+                    (255, 0, 255),
+                    2,
                 )
-                # print(mesh_coords[8])
-                x1, y1 = mesh_coords[8]
-                ## move cursor
-                if mesh_coords[8] and d < 65:
-                    utils.textBlurBackground(
-                        img,
-                        "Moving mode",
-                        cv2.FONT_HERSHEY_COMPLEX,
-                        0.8,
-                        (textX, textY),
-                        2,
-                        utils.GREEN,
-                        (71, 71),
-                        13,
-                        13,
-                    )
-                    cv2.rectangle(
-                        img,
-                        (frameR, frameR),
-                        (width - frameR, height - frameR),
-                        (255, 0, 255),
-                        2,
-                    )
-                    cv2.circle(img, (x1, y1), 10, (255, 0, 255), cv2.FILLED)
-                    # convert coordinates
-                    x3 = np.interp(x1, (frameR, width - frameR), (0, wScr))
-                    y3 = np.interp(y1, (frameR, height - frameR), (0, hScr))
+                cv2.circle(img, (x1, y1), 10, (255, 0, 255), cv2.FILLED)
+                # convert coordinates
+                x3 = np.interp(x1, (frameR, width - frameR), (0, wScr))
+                y3 = np.interp(y1, (frameR, height - frameR), (0, hScr))
 
-                    # Smoothen value
-                    clocX = plocX + (x3 - plocX) / smoothening
-                    clocY = plocY + (y3 - plocY) / smoothening
+                # Smoothen value
+                clocX = plocX + (x3 - plocX) / smoothening
+                clocY = plocY + (y3 - plocY) / smoothening
 
-                    autopy.mouse.move(wScr - clocX, clocY)
-                    plocX, plocY = clocX, clocY
-
-                ## left click
-                if ((leRatio > 3.9) and not (ratio > 4.5)) and d < 75:
-                    img = utils.fillPolyTrans(
-                        img,
-                        [
-                            np.array(
-                                [mesh_coords[p] for p in fc.LEFT_EYE], dtype=np.int32
-                            )
-                        ],
-                        utils.GREEN,
-                        0.5,
-                    )
-                    utils.textBlurBackground(
-                        img,
-                        "Left eye blink => left click",
-                        cv2.FONT_HERSHEY_COMPLEX,
-                        0.8,
-                        (textX, textY),
-                        2,
-                        utils.GREEN,
-                        (71, 71),
-                        13,
-                        13,
-                    )
-                    print("left Click")
-                    pyautogui.leftClick()
-                    pyautogui.PAUSE = 0.2
-
-                ## right click
-                if (reRatio > 3.9 and not (ratio > 4.5)) and d < 75:
-                    img = utils.fillPolyTrans(
-                        img,
-                        [
-                            np.array(
-                                [mesh_coords[p] for p in fc.RIGHT_EYE], dtype=np.int32
-                            )
-                        ],
-                        utils.GREEN,
-                        0.5,
-                    )
-                    utils.textBlurBackground(
-                        img,
-                        "Right eye blink => ight click",
-                        cv2.FONT_HERSHEY_COMPLEX,
-                        0.8,
-                        (textX, textY),
-                        2,
-                        utils.GREEN,
-                        (71, 71),
-                        13,
-                        13,
-                    )
-                    print(f"right click")
-                    pyautogui.rightClick()
-                    pyautogui.PAUSE = 0.2
-
-                ##scroll mode
-                if d > 75:
-                    if (leRatio > 3.9) and not (ratio > 4.5):
-                        utils.textBlurBackground(
-                            img,
-                            "Scroll up",
-                            cv2.FONT_HERSHEY_COMPLEX,
-                            0.8,
-                            (textX, textY),
-                            2,
-                            utils.GREEN,
-                            (71, 71),
-                            13,
-                            13,
-                        )
-                        pyautogui.scroll(20)
-                        print("up")
-                    if (reRatio > 3.9) and not (ratio > 4.5):
-                        utils.textBlurBackground(
-                            img,
-                            "Scroll down",
-                            cv2.FONT_HERSHEY_COMPLEX,
-                            0.8,
-                            (textX, textY),
-                            2,
-                            utils.GREEN,
-                            (71, 71),
-                            13,
-                            13,
-                        )
-                        pyautogui.scroll(-20)
-                        print("Down")
+                autopy.mouse.move(wScr - clocX, clocY)
+                plocX, plocY = clocX, clocY
+                # left point
+                left = [face[145], face[159]]
+                for i in left:
+                    x, y = i
+                    cv2.circle(img, (x, y), 3, (0, 255, 255))
+                
+                if results.multi_face_landmarks:
+                    landmarks = results.multi_face_landmarks[0].landmark
+                    l = [landmarks[145], landmarks[159]]
+                    print(l[0].y - l[1].y)
+                    if (l[0].y - l[1].y) < 0.004:
+                        pyautogui.click()
+                        pyautogui.sleep(1)
 
         # FPS Counter
         currTime = time.time()
@@ -590,6 +501,6 @@ if app_mode == "Face":
         prevTime = currTime
         # Dashboard
         kpil_text.write(f"{int(fps)}")
-        kpil2_text.write(f"{d:.2f}")
-        kpil3_text.write(f"{ratio:.2f}")
+        # kpil2_text.write(f"{d:.2f}")
+        # kpil3_text.write(f"{ratio:.2f}")
         stframe.image(img, channels="BGR")
