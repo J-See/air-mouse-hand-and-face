@@ -1,3 +1,4 @@
+# new branch with mediapipe hand model
 from matplotlib import image
 import mediapipe as mp
 import cv2
